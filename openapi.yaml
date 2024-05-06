@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: ATS
+  version: 1.0.0
+servers:
+  - url: http://localhost:8085
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: Bearer
+paths:
+  /user:
+    get:
+      tags:
+        - default
+      summary: Read
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 2
+                nama: Reja
+                npm: 5
+                kelas: 2A
+                asal_kota: Bekasi
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - default
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 2
+                nama: Wisnu
+                npm: 5
+                kelas: 2A
+                asal_kota: Bekasi
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - default
+      summary: Delete
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /login:
+    post:
+      tags:
+        - default
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: rafli
+                password: rafli
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
